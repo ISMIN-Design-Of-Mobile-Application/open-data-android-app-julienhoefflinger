@@ -1,13 +1,13 @@
 
-## [APP NAME]  
+## Crous Restauration France
   
 Codé par :   
- - [prenom1] [nom1]   
- - [prenom2] [nom2]   
+ - David Jacquemin
+ - Julien Hoefflinger
 
 ## Description  
   
-URL des données : [URL]  
+URL des données : https://data.opendatasoft.com/explore/dataset/fr_crous_restauration_france_entiere%40mesr/table/
   
 [A completer]  
   
