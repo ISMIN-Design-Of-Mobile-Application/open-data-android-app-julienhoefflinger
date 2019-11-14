@@ -1,6 +1,7 @@
 package com.ismin.opendataapp
 
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN
@@ -13,6 +14,13 @@ class MainActivity : AppCompatActivity()
     private lateinit var btnGoToList: AppCompatButton
     private lateinit var btnGoToMap: AppCompatButton
     private lateinit var btnGoToInfo: AppCompatButton
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
