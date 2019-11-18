@@ -1,18 +1,24 @@
 package com.ismin.opendataapp
 
-import com.google.gson.annotations.SerializedName
+import android.media.Image
 import java.io.Serializable
 
 data class RestaurantCrousResponse(
-    val records: List<Records> = ArrayList()
+    val records: List<Restaurant> = ArrayList()
 ) : Serializable
 
-    data class Records(
-        val fields: Fields
+    data class Restaurant(
+        val fields: RestaurantFields
     ) : Serializable
 
-        data class Fields(
+        data class RestaurantFields(
             val title: String,
-            val type: String
-        //  val geolocalisation: Geolocalisation
+            val zone: String,
+            val type: String,
+            val image: Image,
+            val geolocalisation: List<Double> = ArrayList()
         ) : Serializable
+
+//            data class Coordinate(
+//                val coordnate: Double
+//            ) : Serializable

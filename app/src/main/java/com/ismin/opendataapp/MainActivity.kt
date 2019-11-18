@@ -3,7 +3,6 @@ package com.ismin.opendataapp
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN
@@ -35,6 +34,7 @@ class MainActivity : AppCompatActivity()
 
     private lateinit var crousRestaurantsService: CrousRestaurantsService
     private var restaurantsCrous = RestaurantCrousResponse()
+    private var restaurants  = ArrayList<Restaurant>()
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -85,14 +85,9 @@ class MainActivity : AppCompatActivity()
                     Log.d("onresponse response", response.toString());
                     var allCrousRestaurants = response.body()
                     if (allCrousRestaurants != null) {
-                        Toast.makeText(baseContext, allCrousRestaurants.toString() , Toast.LENGTH_LONG).show()
-                        Log.d("onresponse body", allCrousRestaurants.toString());
-                        restaurantsCrous = allCrousRestaurants
+                        restaurants = allCrousRestaurants.records as ArrayList<Restaurant>
                         putListFragment();
                     } else {
-                        Toast.makeText(baseContext, "onresponse error" , Toast.LENGTH_LONG).show()
-                        Log.d("onresponse error body", response.body().toString());
-                        restaurantsCrous = RestaurantCrousResponse()
                         putListFragment();
                     }
                 }
@@ -101,9 +96,6 @@ class MainActivity : AppCompatActivity()
                     call: Call<RestaurantCrousResponse>,
                     t: Throwable
                 ) {
-                    Log.d("error message onfailure", t.message);
-                    Toast.makeText(baseContext, "onFailure error" , Toast.LENGTH_LONG).show()
-                    restaurantsCrous = RestaurantCrousResponse()
                     putListFragment();
                 }
             })
@@ -115,6 +107,10 @@ class MainActivity : AppCompatActivity()
      */
     private fun putListFragment() {
         val fragment = ListFragment()
+
+        val bundle = Bundle()
+        bundle.putSerializable(BOTTLES_ARGUMENTS_KEY, restaurants)
+        fragment.arguments = bundle
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.a_main_relative_layout, fragment)
