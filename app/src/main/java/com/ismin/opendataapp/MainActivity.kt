@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity()
     private lateinit var btnGoToInfo: AppCompatButton
 
     private lateinit var crousRestaurantsService: CrousRestaurantsService
-    private var restaurantsCrous = RestaurantCrousResponse()
     private var restaurants  = ArrayList<Restaurant>()
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

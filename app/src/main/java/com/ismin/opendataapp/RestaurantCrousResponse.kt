@@ -16,7 +16,9 @@ data class RestaurantCrousResponse(
             val zone: String,
             val type: String,
             val image: Image,
-            val geolocalisation: List<Double> = ArrayList()
+            val geolocalisation: List<Double> = ArrayList(),
+            val infos: String,
+            val photo: String
         ) : Serializable
 
 //            data class Coordinate(

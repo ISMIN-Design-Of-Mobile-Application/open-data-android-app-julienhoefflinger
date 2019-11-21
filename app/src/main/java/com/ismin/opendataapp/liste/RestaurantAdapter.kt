@@ -1,12 +1,14 @@
 package com.ismin.opendataapp.liste
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.ismin.opendataapp.R
 import com.ismin.opendataapp.Restaurant
 
-class RestaurantAdapter(private val restaurants: ArrayList<Restaurant>) :
+class RestaurantAdapter(private val restaurants: ArrayList<Restaurant>, private val onItemClickListener: AdapterView.OnItemClickListener) :
     RecyclerView.Adapter<RestaurantViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
@@ -14,13 +16,13 @@ class RestaurantAdapter(private val restaurants: ArrayList<Restaurant>) :
             R.layout.row_crous_restaurant, parent,
             false)
 
-        return RestaurantViewHolder(row)
+        return RestaurantViewHolder(row, onItemClickListener)
     }
 
     override fun onBindViewHolder(viewholder: RestaurantViewHolder, position: Int) {
         val (name, zone, type) = this.restaurants[position].fields
 
-        viewholder.restaurantName.text = name
+        viewholder.restaurantName.text = Html.fromHtml("<u>"+name+"</u>")
         viewholder.restaurantZone.text = zone
         when (type) {
             "Restaurant" -> viewholder.restaurantImage.setImageResource(R.drawable.ic_restaurant)
