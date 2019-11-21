@@ -130,6 +130,10 @@ class MainActivity : AppCompatActivity()
     private fun putCarteFragment() {
         val fragment = CarteFragment()
 
+        val bundle = Bundle()
+        bundle.putSerializable(BOTTLES_ARGUMENTS_KEY, restaurants)
+        fragment.arguments = bundle
+
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.a_main_relative_layout, fragment)
         fragmentTransaction.setTransition(TRANSIT_FRAGMENT_OPEN)

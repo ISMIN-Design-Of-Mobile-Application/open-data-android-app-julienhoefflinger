@@ -13,15 +13,19 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.ismin.opendataapp.R
+import com.ismin.opendataapp.Restaurant
+import com.ismin.opendataapp.liste.BOTTLES_ARGUMENTS_KEY
 
 class CarteFragment : Fragment(), OnMapReadyCallback {
     private var listener: OnCarteFragmentListener? = null
+    private var restaurants  = ArrayList<Restaurant>()
     private lateinit var mMap: GoogleMap
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        restaurants = arguments!!.getSerializable(BOTTLES_ARGUMENTS_KEY) as ArrayList<Restaurant>;
         return inflater.inflate(R.layout.fragment_carte, container, false)
     }
 
@@ -47,9 +51,16 @@ class CarteFragment : Fragment(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val centreFrance = LatLng(46.52863469527167,2.43896484375)
+        mMap.addMarker(MarkerOptions().position(centreFrance).title("Centre exact de la France"))
+
+        restaurants.forEach {
+            mMap.addMarker(MarkerOptions().position(
+                LatLng(it.fields.geolocalisation[0],it.fields.geolocalisation[1])
+            ).title(it.fields.title))
+        }
+
+        mMap.moveCamera(CameraUpdateFactory. newLatLngZoom (centreFrance, 5.0F))
     }
 
     fun onCarteButtonPressed() {
