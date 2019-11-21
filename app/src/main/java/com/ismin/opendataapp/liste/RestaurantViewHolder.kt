@@ -1,9 +1,10 @@
-package com.ismin.opendataapp
+package com.ismin.opendataapp.liste
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.ismin.opendataapp.R
 
 class RestaurantViewHolder (rootView: View) : RecyclerView.ViewHolder(rootView) {
     var restaurantName: TextView

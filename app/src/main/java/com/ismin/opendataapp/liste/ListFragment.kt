@@ -1,4 +1,4 @@
-package com.ismin.opendataapp
+package com.ismin.opendataapp.liste
 
 import android.content.Context
 import android.os.Bundle
@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ismin.opendataapp.R
+import com.ismin.opendataapp.Restaurant
 
 const val BOTTLES_ARGUMENTS_KEY = "BOTTLES_ARGUMENTS_KEY"
 

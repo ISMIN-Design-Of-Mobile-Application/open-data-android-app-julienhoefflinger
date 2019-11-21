@@ -1,4 +1,4 @@
-package com.ismin.opendataapp
+package com.ismin.opendataapp.info
 
 import android.content.Context
 import android.os.Bundle
@@ -6,24 +6,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ismin.opendataapp.R
 
-class CarteFragment : Fragment() {
-    private var listener: OnCarteFragmentListener? = null
+class InfoFragment : Fragment() {
+    private var listener: OnInfoFragmentListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_carte, container, false)
+        return inflater.inflate(R.layout.fragment_info, container, false)
     }
 
-    fun onCarteButtonPressed() {
-        listener?.onCarteFragment()
+    fun onInfoButtonPressed() {
+        listener?.onInfoFragment()
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnCarteFragmentListener) {
+        if (context is OnInfoFragmentListener) {
             listener = context
         } else {
             throw RuntimeException("$context must implement OnFragmentInteractionListener")
@@ -35,8 +36,8 @@ class CarteFragment : Fragment() {
         listener = null
     }
 
-    interface OnCarteFragmentListener {
-        fun onCarteFragment()
+    interface OnInfoFragmentListener {
+        fun onInfoFragment()
     }
 
 }

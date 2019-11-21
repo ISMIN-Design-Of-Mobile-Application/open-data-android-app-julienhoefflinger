@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfoFragment">
+    tools:context=".info.InfoFragment">
 
     <TextView
         android:id="@+id/textView3"
@@ -15,7 +15,10 @@
         android:text="Infos générales sur l'application\n\n
         - URL des données : \nhttps://data.opendatasoft.com/explore/dataset/fr_crous_restauration_france_entiere%40mesr/table/\n\n
         - La donnée affichée est l'ensemble des restaurant Crous de France avec leur emplacement géographique\n\n
-        - Description des icones de la liste des lieux de restauration :" />
+        - Description des icones de la liste des lieux de restauration :"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewRestaurant"

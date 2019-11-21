@@ -13,6 +13,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import com.google.gson.GsonBuilder
+import com.ismin.opendataapp.carte.CarteFragment
+import com.ismin.opendataapp.info.InfoFragment
+import com.ismin.opendataapp.liste.BOTTLES_ARGUMENTS_KEY
+import com.ismin.opendataapp.liste.ListFragment
 import okhttp3.HttpUrl
 import retrofit2.http.Url
 

@@ -1,14 +1,17 @@
-package com.ismin.opendataapp
+package com.ismin.opendataapp.liste
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ismin.opendataapp.R
+import com.ismin.opendataapp.Restaurant
 
 class RestaurantAdapter(private val restaurants: ArrayList<Restaurant>) :
     RecyclerView.Adapter<RestaurantViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
-        val row = LayoutInflater.from(parent.context).inflate(R.layout.row_crous_restaurant, parent,
+        val row = LayoutInflater.from(parent.context).inflate(
+            R.layout.row_crous_restaurant, parent,
             false)
 
         return RestaurantViewHolder(row)
