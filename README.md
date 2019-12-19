@@ -11,9 +11,12 @@ URL des données : https://data.opendatasoft.com/explore/dataset/fr_crous_restau
   
 Liste des restaurats Crous en France
   
-## Librairies externes  
-  
-[A completer]  
+## Problème rencontré
+
+Les images des données que nous avons choisies sont inutilisables.
+La très grande majorité des liens menant aux images sont morts.
+Nous avions initialement utilisé Picasso pour lire ces images, cela a fonctionné mais pour trop peu d'images.
+Nous avons donc décidé d'utiliser une image statique du Crous.
 
 ## Consignes  
   
