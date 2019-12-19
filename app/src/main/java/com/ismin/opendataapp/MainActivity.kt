@@ -3,6 +3,8 @@ package com.ismin.opendataapp
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN
@@ -17,14 +19,9 @@ import com.ismin.opendataapp.carte.CarteFragment
 import com.ismin.opendataapp.info.InfoFragment
 import com.ismin.opendataapp.liste.BOTTLES_ARGUMENTS_KEY
 import com.ismin.opendataapp.liste.ListFragment
+import kotlinx.android.synthetic.main.fragment_info.*
 import okhttp3.HttpUrl
 import retrofit2.http.Url
-
-
-
-
-
-
 
 
 class MainActivity : AppCompatActivity()
@@ -42,8 +39,24 @@ class MainActivity : AppCompatActivity()
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
+
+
         return super.onCreateOptionsMenu(menu)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.action_refresh -> {
+                resetHTTPData()
+                val toast = Toast.makeText(applicationContext, "Données rafraichies avec succès", Toast.LENGTH_SHORT)
+                toast.show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +78,10 @@ class MainActivity : AppCompatActivity()
             putInfoFragment()
         }
 
+        resetHTTPData()
+    }
+
+    private fun resetHTTPData(){
         val gson = GsonBuilder()
             .setLenient()
             .create()
@@ -102,7 +119,6 @@ class MainActivity : AppCompatActivity()
                     putListFragment();
                 }
             })
-
     }
 
     /**
